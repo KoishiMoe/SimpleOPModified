@@ -26,7 +26,6 @@ def set_file(self: MCDReforgedLogger, file_name: str):
         with open(file_name, 'w') as f:
             f.write('')
     self.file_handler = logging.FileHandler(file_name, encoding='UTF-8')
-    self.file_handler.setFormatter(self.FILE_FMT)
     self.addHandler(self.file_handler)
 
 
