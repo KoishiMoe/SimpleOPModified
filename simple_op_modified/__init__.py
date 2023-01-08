@@ -159,7 +159,7 @@ def parse_join_info(server: PluginServerInterface, info: Info) -> Optional[str]:
     parsed = parse('{name}[{player_ip}] logged in with entity id {} at ({})', info.content)
     if parsed is not None and parsed['player_ip'] != 'local':
         if parsed['name'] not in config.manual_list and server.get_permission_level(
-                parsed['name']) > config.get_op_permission:
+                parsed['name']) >= config.get_op_permission:
             return parsed['name']
     return None
 
@@ -197,7 +197,7 @@ def on_load(server: PluginServerInterface, prev):
 
     def pliteral(*literal: str, key: str):
         return Literal(list(literal)).requires(
-            lambda src: src.has_permission(config.get(key, 0)),
+            lambda src: src.has_permission(config.get(key, 1)),
             failure_message_getter=lambda: tr('error.perm_denied')
         )
 

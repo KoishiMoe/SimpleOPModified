@@ -7,8 +7,8 @@ from simple_op_modified.constants import CONFIG_PATH, global_server
 
 
 class Config(Serializable):
-    restart_permission: int = 1
-    get_op_permission: int = 3
+    restart_permission: int = 2
+    get_op_permission: int = 4
     auto_op: bool = False
     manual_list: List[str] = []
     restart_need_confirm: bool = True
