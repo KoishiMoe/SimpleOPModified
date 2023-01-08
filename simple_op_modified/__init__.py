@@ -65,7 +65,7 @@ def restart_confirm(source: CommandSource):
             time.sleep(1)
         source.get_server().restart()
     else:
-        source.reply(no_restart_required(source))
+        no_restart_required(source)
     restart_lock.release()
 
 
